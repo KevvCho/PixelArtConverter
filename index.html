@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Pixel Art Converter</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <button class="menu-btn" id="menuBtn">☰ Menu</button>
+
+    <aside class="sidebar" id="sidebar">
+        <h1>Conversion Controls</h1>
+
+        <div class="control-group">
+            <label for="resolution">Output Width (px)</label>
+            <input id="resolution" type="range" min="80" max="1024" step="1" value="320">
+            <div class="value-display"><span id="resolution-value">320</span> px</div>
+        </div>
+
+        <div class="control-group">
+            <label for="color-reduction">Color Reduction</label>
+            <input id="color-reduction" type="range" min="2" max="256" step="1" value="16">
+            <div class="value-display"><span id="color-value">16</span> colors</div>
+        </div>
+
+        <div class="control-group">
+            <label for="dither-intensity">Dithering Intensity</label>
+            <input id="dither-intensity" type="range" min="0" max="100" value="50">
+            <div class="value-display"><span id="dither-value">50</span>%</div>
+        </div>
+
+        <div class="control-group">
+            <label for="brightness">Brightness</label>
+            <input id="brightness" type="range" min="-100" max="100" value="0">
+            <div class="value-display"><span id="brightness-value">0</span></div>
+        </div>
+
+        <div class="control-group">
+            <label for="contrast">Contrast</label>
+            <input id="contrast" type="range" min="-100" max="100" value="0">
+            <div class="value-display"><span id="contrast-value">0</span></div>
+        </div>
+
+        <div class="control-group">
+            <label for="saturation">Saturation</label>
+            <input id="saturation" type="range" min="-100" max="100" value="0">
+            <div class="value-display"><span id="saturation-value">0</span></div>
+        </div>
+
+        <div class="control-group">
+            <label for="palette-selector">Color Palette</label>
+            <select id="palette-selector">
+                <option value="standard">Standard (16 colors)</option>
+                <option value="pastel">Pastel</option>
+                <option value="vibrant">Vibrant</option>
+                <option value="monochrome">Monochrome</option>
+                <option value="sepia">Sepia</option>
+                <option value="original">Use original colors</option>
+                <option value="neon">Neon</option>
+                <option value="earth">Earth tones</option>
+                <option value="grayscale">Grayscale</option>
+                <option value="retro">Retro Game</option>
+            </select>
+        </div>
+
+        <div class="control-group checkbox-group">
+            <input id="create-scene" type="checkbox">
+            <label for="create-scene">Create composition</label>
+        </div>
+
+        <div class="scene-controls" id="scene-controls">
+            <div class="control-group">
+                <label for="scene-text">Text overlay</label>
+                <textarea id="scene-text" rows="2" placeholder="Enter text..."></textarea>
+            </div>
+
+            <div class="control-group">
+                <label for="image-size">Image size in composition (%)</label>
+                <input id="image-size" type="range" min="30" max="150" value="100">
+                <div class="value-display"><span id="image-size-value">100</span>%</div>
+            </div>
+
+            <div class="control-group">
+                <label for="text-size">Text size (px)</label>
+                <input id="text-size" type="range" min="12" max="40" value="20">
+                <div class="value-display"><span id="text-size-value">20</span> px</div>
+            </div>
+
+            <div class="control-group">
+                <label for="scene-download-resolution">Composition download width</label>
+                <input id="scene-download-resolution" type="range" min="320" max="1920" step="160" value="1024">
+                <div class="value-display"><span id="scene-download-resolution-value">1024</span> px</div>
+            </div>
+        </div>
+    </aside>
+
+    <div class="main-wrapper">
+        <div class="images-row">
+            <div class="preview-card">
+                <div class="preview-title">Original Image</div>
+                <div class="preview-area" id="original-area">
+                    <img id="image-preview" alt="Click to load image...">
+                    <input id="file-input" type="file" accept="image/*" style="display:none">
+                </div>
+            </div>
+
+            <div class="preview-card">
+                <div class="preview-title">Result</div>
+                <div class="preview-area">
+                    <div class="result-wrapper" id="result-wrapper">
+                        <canvas id="result"></canvas>
+                        <div id="scene-container">
+                            <img id="scene-image" alt="">
+                            <div id="scene-text-display">Enter your text here...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="actions">
+            <button id="convert-btn" class="styled-btn">Generate Image</button>
+            <button id="download-btn" class="styled-btn download-btn">💾 Download</button>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+	<script src="js/image-processor.js"></script>
+</body>
+</html>
