@@ -59,3 +59,7 @@
 -  Client-side only (no server required)
 
 -  Responsive CSS Grid layout
+
+## Preview
+
+![Main](https://i.imgur.com/z1qjRjf.png)
